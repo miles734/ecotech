@@ -17,6 +17,7 @@ from persistencia.departamento_dao import DepartamentoDAO
 from persistencia.empleado_dao import EmpleadoDAO
 from persistencia.proyecto_dao import ProyectoDAO
 from persistencia.registro_tiempo_dao import RegistroTiempoDAO
+from persistencia.semilla_bd import preparar_base_datos
 from cargar_ejemplos import (
     EMPLEADOS_EJEMPLO,
     PROYECTOS_EJEMPLO,
@@ -167,3 +168,19 @@ class CRUDTests(unittest.TestCase):
         self.assertEqual(len(empleados_ejemplo), 2)
         self.assertEqual(len(proyectos_ejemplo), 2)
         self.assertEqual(len(registros_ejemplo), 3)
+
+    def test_preparar_base_datos_carga_30_empleados(self):
+        preparar_base_datos()
+        preparar_base_datos()
+
+        empleados = EmpleadoDAO.listar()
+        self.assertGreaterEqual(len(empleados), 30)
+
+        emails_esperados = {
+            "admin@ecotech.com",
+            "ana.torres@ecotech.com",
+            "carlos.morales@ecotech.com",
+            "sofia.garcia@ecotech.com",
+        }
+        emails_actuales = {empleado.email for empleado in empleados}
+        self.assertTrue(emails_esperados.issubset(emails_actuales))

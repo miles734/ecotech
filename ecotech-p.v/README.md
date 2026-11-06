@@ -146,10 +146,15 @@ Al iniciar, el sistema prepara automáticamente la base de datos y genera los us
 
 EcoTech incorpora usuarios iniciales para facilitar las pruebas de funcionamiento.
 
-| Rol | Usuario | Contraseña |
-|---|---|---|
-| Administrador | `admin` | `admin123` |
-| Empleado | `ana` | `ana123` |
+### Iniciar sesión como administrador
+- Usuario: `admin`
+- Contraseña: `admin123`
+
+### Iniciar sesión como empleado
+- Usuario: `ana`
+- Contraseña: `ana123`
+
+> Estas credenciales vienen creadas automáticamente al iniciar la aplicación por primera vez.
 
 **Importante:** Estas credenciales son exclusivamente para pruebas. Se recomienda modificarlas antes de utilizar el sistema en un entorno real.
 
